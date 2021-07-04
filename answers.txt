@@ -1,0 +1,34 @@
+1.- Explain the difference between Unit Tests, Integration Tests, and Acceptance Tests.
+R: Unit test is for test one microservice, with input data direct to the microservice. Integration Tests are for testing two or more microservices, these are intended to test the communication between microservices. Acceptance Test determine if the requirements of a specification or contract are met.
+
+2.- How does SCRUM work?
+R: SCRUM is an agile methodology, this methodology is based on sprints and iterations, there are daily meetings where the developers talk about their progress, what they are going to work on and if they have any problem to develop. These methodologies aim to have fast applications without a lot of documentation.
+
+3.- Explain how Test-Driven Development (TDD) works and why it is important to use it.
+R: The requirements being converted to test cases before software is fully developed. This is opposed to software being developed first and test cases created later. And it's important because you refreact the code at the same time to the development, so the code does not change much.
+
+4.- Explain how Continuous Integration and Continuous Delivery works and list its benefits.
+They aim to automate code reviews, testing and deployment. Via workflows or pipelines where the code is clone, review, test and deploy if it meets the requirements.
+
+5.- What is the difference between a monolithic application and an application based in
+microservices?
+R: The monolithic application makes all the sections of an application, payments, validations, accesses, etc. The microservices aim to divide this sections in different applications with different enviroments.
+
+6.- Describe a use case to implement Serverless.
+R: Serverless is a solution for companies that do not have a physical server, due to lack of space or cost.
+
+7.- What are the main DevOps principles ?
+- Sharing
+- Measurement
+- Automation
+- Culture
+
+8.- What are your 3 favorite open source projects and why ?
+- Linux: Because is a great operating system, robust and you can have any windows application.
+- GNS3: Because is a solution to learn networks, is the alternative of Cisco Packet Tracer
+- GIMP: Because is the alternative of Photoshop and I use it to many times.
+
+9.- List 3 books that have impacted and improved your professional career as a developer.
+- Compiladores, principios técnicas y herramientas.
+- Estructuras de datos y algoritmos.
+- Introducción a la programación orientada a objetos en Java.
