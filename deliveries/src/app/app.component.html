@@ -1,27 +1,8 @@
 <div class="all">
 
   <div class="container">
-      <app-card 
-        [card]="{
-          ruta: 'RG010',
-          conductor: 'Jóse Luis Cepeda',
-          creada: '1 de Enero del 2019',
-          inicio: '13:00',
-          termino: '13:36',
-          entregas: 5,
-          completada: true
-        }" 
-      ></app-card>
-      <app-card 
-        [card]="{
-          ruta: 'RG010',
-          conductor: 'Jóse Luis Cepeda',
-          creada: '1 de Enero del 2019',
-          inicio: '13:00',
-          termino: '13:36',
-          entregas: 5,
-          completada: false
-        }" 
+      <app-card *ngFor="let item of cards" 
+        [card]="item" 
       ></app-card>
   </div>
 </div>
