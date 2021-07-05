@@ -1,0 +1,746 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "TV SERIES API REST",
+    "description": "Specification of TV SERIES CRUD"
+  },
+  "paths": {
+    "/api/director":{
+      "get": {
+        "tags": ["Gestion directores"],
+        "description": "Con esta operacion obtenemos el total de directores",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Array of Directors",
+            "schema":{
+              "type": "array",
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/ID"
+                  },
+                  {
+                    "$ref": "#/definitions/Director"
+                  }
+                ]
+              }
+            }
+          },
+          "400":{
+            "$ref": "#/responses/BadRequest"
+          },
+          "401":{
+            "$ref": "#/responses/AuthError"
+          },
+          "404":{
+            "$ref": "#/responses/NotFound"
+          },
+          "500":{
+            "$ref": "#/responses/ServerError"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Gestion directores"],
+        "description": "Con esta operacion agregamos un nuevo director",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Director"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ID from created Director",
+            "schema":{
+              "$ref": "#/definitions/ID"
+            }
+          },
+          "400":{
+            "$ref": "#/responses/BadRequest"
+          },
+          "401":{
+            "$ref": "#/responses/AuthError"
+          },
+          "404":{
+            "$ref": "#/responses/NotFound"
+          },
+          "500":{
+            "$ref": "#/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/api/director/{id}":{
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "x-example": "1234",
+          "description": "ID del director"
+        }
+      ],
+      "put": {
+        "tags": ["Gestion directores"],
+        "description": "Con esta operacion editamos el director con el id especificado",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Director"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ID from edited Director",
+            "schema":{
+              "$ref": "#/definitions/ID"
+            }
+          },
+          "400":{
+            "$ref": "#/responses/BadRequest"
+          },
+          "401":{
+            "$ref": "#/responses/AuthError"
+          },
+          "404":{
+            "$ref": "#/responses/NotFound"
+          },
+          "500":{
+            "$ref": "#/responses/ServerError"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Gestion directores"],
+        "description": "Con esta operacion eliminamos el director con el id especificado",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "ID from deleted Director",
+            "schema":{
+              "$ref": "#/definitions/ID"
+            }
+          },
+          "400":{
+            "$ref": "#/responses/BadRequest"
+          },
+          "401":{
+            "$ref": "#/responses/AuthError"
+          },
+          "404":{
+            "$ref": "#/responses/NotFound"
+          },
+          "500":{
+            "$ref": "#/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/api/actor":{
+      "get": {
+        "tags": ["Gestion actores"],
+        "description": "Con esta operacion obtenemos el total de actores",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Array of Actors",
+            "schema":{
+              "type": "array",
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/ID"
+                  },
+                  {
+                    "$ref": "#/definitions/Actor"
+                  }
+                ]
+              }
+            }
+          },
+          "400":{
+            "$ref": "#/responses/BadRequest"
+          },
+          "401":{
+            "$ref": "#/responses/AuthError"
+          },
+          "404":{
+            "$ref": "#/responses/NotFound"
+          },
+          "500":{
+            "$ref": "#/responses/ServerError"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Gestion actores"],
+        "description": "Con esta operacion agregamos un nuevo actor",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Actor"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ID from created Actor",
+            "schema":{
+              "$ref": "#/definitions/ID"
+            }
+          },
+          "400":{
+            "$ref": "#/responses/BadRequest"
+          },
+          "401":{
+            "$ref": "#/responses/AuthError"
+          },
+          "404":{
+            "$ref": "#/responses/NotFound"
+          },
+          "500":{
+            "$ref": "#/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/api/actor/{id}":{
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "x-example": "1234",
+          "description": "ID del actor"
+        }
+      ],
+      "put": {
+        "tags": ["Gestion actores"],
+        "description": "Con esta operacion editamos el actor con el id especificado",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Actor"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ID from edited Actor",
+            "schema":{
+              "$ref": "#/definitions/ID"
+            }
+          },
+          "400":{
+            "$ref": "#/responses/BadRequest"
+          },
+          "401":{
+            "$ref": "#/responses/AuthError"
+          },
+          "404":{
+            "$ref": "#/responses/NotFound"
+          },
+          "500":{
+            "$ref": "#/responses/ServerError"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Gestion actores"],
+        "description": "Con esta operacion eliminamos el actor con el id especificado",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "ID from deleted Actor",
+            "schema":{
+              "$ref": "#/definitions/ID"
+            }
+          },
+          "400":{
+            "$ref": "#/responses/BadRequest"
+          },
+          "401":{
+            "$ref": "#/responses/AuthError"
+          },
+          "404":{
+            "$ref": "#/responses/NotFound"
+          },
+          "500":{
+            "$ref": "#/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/api/episode":{
+      "get": {
+        "tags": ["Gestion episodios"],
+        "description": "Con esta operacion obtenemos el total de episodios",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Array of Episodes",
+            "schema":{
+              "type": "array",
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/ID"
+                  },
+                  {
+                    "$ref": "#/definitions/Episode"
+                  }
+                ]
+              }
+            }
+          },
+          "400":{
+            "$ref": "#/responses/BadRequest"
+          },
+          "401":{
+            "$ref": "#/responses/AuthError"
+          },
+          "404":{
+            "$ref": "#/responses/NotFound"
+          },
+          "500":{
+            "$ref": "#/responses/ServerError"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Gestion episodios"],
+        "description": "Con esta operacion agregamos un nuevo episodios",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Episode"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ID from created Episode",
+            "schema":{
+              "$ref": "#/definitions/ID"
+            }
+          },
+          "400":{
+            "$ref": "#/responses/BadRequest"
+          },
+          "401":{
+            "$ref": "#/responses/AuthError"
+          },
+          "404":{
+            "$ref": "#/responses/NotFound"
+          },
+          "500":{
+            "$ref": "#/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/api/episode/{id}":{
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "x-example": "1234",
+          "description": "ID del episodio"
+        }
+      ],
+      "put": {
+        "tags": ["Gestion episodios"],
+        "description": "Con esta operacion editamos el episdio con el id especificado",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Episode"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ID from edited Episode",
+            "schema":{
+              "$ref": "#/definitions/ID"
+            }
+          },
+          "400":{
+            "$ref": "#/responses/BadRequest"
+          },
+          "401":{
+            "$ref": "#/responses/AuthError"
+          },
+          "404":{
+            "$ref": "#/responses/NotFound"
+          },
+          "500":{
+            "$ref": "#/responses/ServerError"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Gestion episodios"],
+        "description": "Con esta operacion eliminamos el episodio con el id especificado",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "ID from deleted Episode",
+            "schema":{
+              "$ref": "#/definitions/ID"
+            }
+          },
+          "400":{
+            "$ref": "#/responses/BadRequest"
+          },
+          "401":{
+            "$ref": "#/responses/AuthError"
+          },
+          "404":{
+            "$ref": "#/responses/NotFound"
+          },
+          "500":{
+            "$ref": "#/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/api/serie":{
+      "get": {
+        "tags": ["Gestion series"],
+        "description": "Con esta operacion obtenemos el total de series",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Array of Series",
+            "schema":{
+              "type": "array",
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/ID"
+                  },
+                  {
+                    "$ref": "#/definitions/Serie"
+                  }
+                ]
+              }
+            }
+          },
+          "400":{
+            "$ref": "#/responses/BadRequest"
+          },
+          "401":{
+            "$ref": "#/responses/AuthError"
+          },
+          "404":{
+            "$ref": "#/responses/NotFound"
+          },
+          "500":{
+            "$ref": "#/responses/ServerError"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Gestion series"],
+        "description": "Con esta operacion agregamos una nueva serie",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Serie"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ID from created Serie",
+            "schema":{
+              "$ref": "#/definitions/ID"
+            }
+          },
+          "400":{
+            "$ref": "#/responses/BadRequest"
+          },
+          "401":{
+            "$ref": "#/responses/AuthError"
+          },
+          "404":{
+            "$ref": "#/responses/NotFound"
+          },
+          "500":{
+            "$ref": "#/responses/ServerError"
+          }
+        }
+      }
+    },
+    "/api/serie/{id}":{
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "x-example": "1234",
+          "description": "ID de la serie"
+        }
+      ],
+      "put": {
+        "tags": ["Gestion series"],
+        "description": "Con esta operacion editamos la serie con el id especificado",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Serie"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ID from edited Serie",
+            "schema":{
+              "$ref": "#/definitions/ID"
+            }
+          },
+          "400":{
+            "$ref": "#/responses/BadRequest"
+          },
+          "401":{
+            "$ref": "#/responses/AuthError"
+          },
+          "404":{
+            "$ref": "#/responses/NotFound"
+          },
+          "500":{
+            "$ref": "#/responses/ServerError"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Gestion series"],
+        "description": "Con esta operacion eliminamos la serie con el id especificado",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "ID from deleted Serie",
+            "schema":{
+              "$ref": "#/definitions/ID"
+            }
+          },
+          "400":{
+            "$ref": "#/responses/BadRequest"
+          },
+          "401":{
+            "$ref": "#/responses/AuthError"
+          },
+          "404":{
+            "$ref": "#/responses/NotFound"
+          },
+          "500":{
+            "$ref": "#/responses/ServerError"
+          }
+        }
+      }
+    }
+  },
+  "responses": {
+    "BadRequest":{
+      "description": "El servidor no pudo interpretar el request. Verifique los parámetros del request",
+      "schema":{
+        "$ref": "#/definitions/Error"
+      },
+      "examples": {
+        "application/json":{
+            "codigo": 400,
+            "tipo": "Error al interpretar solicitud",
+            "descripcion": "Elemento no válido en el request"
+        }
+      }
+    },
+    "AuthError":{
+      "description": "La autorización no tuvo éxito. Falta información de autenticación para obtener la respuesta solicitada",
+      "schema":{
+        "$ref": "#/definitions/Error"
+      },
+      "examples": {
+        "application/json":{
+            "codigo": 401,
+            "tipo": "Error de autorización",
+            "descripcion": "Falta información de autenticación para obtener la respuesta solicitada"
+        }
+      }
+    },
+    "NotFound":{
+      "description": "Recurso no encontrado. No se encontró contenido para la solicitud especificada",
+      "schema":{
+        "$ref": "#/definitions/Error"
+      },
+      "examples": {
+        "application/json":{
+            "codigo": 404,
+            "tipo": "Recurso no encontrado",
+            "descripcion": "No se encuentra el recurso al que desea acceder"
+        }
+      }
+    },
+    "ServerError": {
+      "description": "Error interno en el servidor. El servidor encontró una situación que no sabe cómo manejarla",
+      "schema":{
+        "$ref": "#/definitions/Error"
+      },
+      "examples": {
+        "application/json":{
+            "codigo": 500,
+            "tipo": "Error interno servidor",
+            "descripcion": "El servidor encontró una situación que no sabe cómo manejarla"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Error":{
+      "description": "El servidor no pudo interpretar el request. Verifique los parámetros del request",
+      "type":"object",
+      "properties": {
+        "codigo": {
+          "type": "integer",
+          "description": "código del error"
+        },
+        "tipo": {
+          "type": "string",
+          "description": "Tipo del error"
+        },
+        "descripcion": {
+          "type": "string",
+          "description": "Descripción del error"
+        }
+      }
+    },
+    "ID": {
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": "1234"
+        }
+      }
+    },
+    "Director":{
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Director Nombre"
+        },
+        "phone": {
+          "type": "string",
+          "example": "5545531541"
+        },
+        "email": {
+          "type": "string",
+          "example": "director@ejemplo.com"
+        } 
+      }
+    },
+    "Actor":{
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Actor Nombre"
+        },
+        "phone": {
+          "type": "string",
+          "example": "5545531541"
+        },
+        "email": {
+          "type": "string",
+          "example": "director@ejemplo.com"
+        } 
+      }
+    },
+    "Episode":{
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Episodio Nombre"
+        },
+        "duration": {
+          "type": "number",
+          "example": "34"
+        },
+        "id_director": {
+          "type": "number",
+          "example": "1234"
+        },
+        "id_serie": {
+          "type": "number",
+          "example": "1234"
+        } 
+      }
+    },
+    "Serie":{
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Serie Nombre"
+        },
+        "tipo": {
+          "type": "string",
+          "example": "Terror"
+        },
+        "actors": {
+          "type":"array",
+          "items": {
+            "allOf": [
+              {"$ref": "#/definitions/ID"},
+              {"$ref": "#/definitions/Actor"}
+            ]
+          }
+        }
+      }
+    }
+  }
+
+}
