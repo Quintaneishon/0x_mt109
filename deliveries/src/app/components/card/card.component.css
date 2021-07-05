@@ -1,0 +1,11 @@
+.row{
+    background-color: white;
+    padding: 2rem 1rem;
+    border-radius: 3px;
+    border-left:solid 5px white;
+    margin-bottom: 1rem;
+}
+.gris{
+    color: gray;
+    font-size: 1rem;
+}

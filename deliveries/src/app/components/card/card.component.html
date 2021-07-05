@@ -1,0 +1,33 @@
+<div class="row border-start-1" 
+[class.border-primary] = "!card.completada" 
+[class.border-success] = "card.completada" 
+>
+    <div class="col-2">
+      <div class="gris">Ruta</div>
+      <div>{{card.ruta}}</div>
+    </div>
+    <div class="col-3">
+      <div class="gris">Conductor</div>
+      <div>{{card.conductor}}</div>
+    </div>
+    <div class="col-3">
+      <div class="gris">Creada</div>
+      <div>{{card.creada}}</div>
+    </div>
+    <div class="col-1">
+      <div class="gris">Inició</div>
+      <div>{{card.inicio}}</div>
+    </div>
+    <div class="col-1">
+      <div class="gris">Terminó</div>
+      <div>{{card.termino}}</div>
+    </div>
+    <div class="col-1">
+      <div class="gris">Entregas</div>
+      <div>{{card.entregas}}</div>
+    </div>
+    <div class="col-1 align-self-center">
+      <span class="badge rounded-pill bg-primary" *ngIf="!card.completada">En Ruta</span>
+      <span class="badge rounded-pill bg-success" *ngIf="card.completada">Completada</span>
+    </div>
+  </div>

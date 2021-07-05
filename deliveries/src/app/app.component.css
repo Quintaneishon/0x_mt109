@@ -1,0 +1,9 @@
+.all{
+    display: flex;
+    background-color: #f2f2f2;
+    min-height: 100vh;
+}
+.container{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
