@@ -2,55 +2,94 @@ package main
 
 import "fmt"
 
-func removeBlackPixels( a[][] int ) int {
-	n :=  len(a[0]) // columns
-	m :=  len(a) // rows
-	var x,y []int // coordinates of edges with value 1
+type Pixel struct {
+	x int
+	y int
+	hold bool
+}
+
+func contains( res []Pixel, i int , j int ) bool {
+	for _, p := range res {
+        if p.x == i && p.y == j {
+            return true
+        }
+    }
+    return false
+}
+
+func removeBlackPixels( a[][] int ) [][]int {
+	n :=  len(a) // rows
+	m :=  len(a[0]) // columns
+	var res []Pixel // Array with black pixels
 	
-	// go through the matrix to get the edges and append to x and y
+	// go through the matrix to get the edges and get the black pixels
 	for i := 0; i < n; i++ {
 		for j := 0; j < m; j++ {
-			if i == 0 && a[i][j] == 1{
-				x = append(x,i)
-				y = append(y,j)
-			} else if i == n-1 && a[i][j] == 1{
-            	x = append(x,i)
-				y = append(y,j)
-			} else if j == 0 && a[i][j] == 1{
-				x = append(x,i)
-				y = append(y,j)
-			} else if j == m-1 && a[i][j] == 1{
-            	x = append(x,i)
-				y = append(y,j)
+			if a[i][j] == 1 && (i == 0 || i == n-1 || j == 0 || j == m-1)  {
+				move(i,j,a,&res,n,m)
 			}
 		}
 	}
-	// go through the matrix to get the edges
-	for i := 0; i < n; i++ {
-		for j := 0; j < m; j++ {
-			// not the edges
-			if i!= 0 && i != n-1 && j!=0 && j!=m-1{
-				// if value is 1
-				if a[i][j] == 1{
-					// go through the coordinates
-					for k := 0; k < len(x); k++ {
-						// if is conected, add to the coordinates slice, and break the loop
-						if ( i-1 == x[k] && j == y[k]) || ( i == x[k] && j-1 == y[k]) || ( i == x[k] && j+1 == y[k]) || ( i+1 == x[k] && j == y[k]){
-							x = append(x,i)
-							y = append(y,j)
-							a[i][j] = 1
-							break
-						} else {
-							// if not connected, change the value to 0 
-							a[i][j] = 0
-						}
-					}
-				}
-			}	
+	
+	// create new matrzix with black pixels removed
+	for i := 1; i < n-1; i++ {
+		for j := 1; j < m-1; j++ {
+			if a[i][j] == 1 && !contains(res, i, j){
+				a[i][j] = 0
+			}
 		}
 	}
+
 	printMatrix(a)
-	return len(x)
+	return a
+}
+
+func move( x int, y int, a [][]int, res *[]Pixel, n int , m int) {
+	// izquierda
+	if x - 1 > 0 {
+		if a[x-1][y] == 1 && !contains(*res, x-1, y){ // avoid overflow
+			var p Pixel
+			p.x = x-1
+			p.y = y
+			p.hold = true
+			*res = append(*res, p)
+			
+			move( x-1, y, a, res, n, m)
+		}
+	}
+	// derecha
+	if x + 1 < n - 1 {
+		if a[x+1][y] == 1 && !contains(*res, x+1, y){ // avoid overflow
+			var p Pixel
+			p.x = x+1
+			p.y = y
+			p.hold = true
+			*res = append(*res, p)
+			move( x+1, y, a, res, n, m)
+		}
+	}
+	// arriba
+	if y - 1 > 0 {
+		if a[x][y-1] == 1 && !contains(*res, x, y-1){ // avoid overflow
+			var p Pixel
+			p.x = x
+			p.y = y-1
+			p.hold = true
+			*res = append(*res, p)
+			move( x, y-1, a, res, n, m)
+		}
+	}
+	// abajo
+	if y + 1 < m - 1 {
+		if a[x][y+1] == 1 && !contains(*res, x, y+1){ // avoid overflow
+			var p Pixel
+			p.x = x
+			p.y = y+1
+			p.hold = true
+			*res = append(*res, p)
+			move( x, y+1, a, res, n, m)
+		}
+	}
 }
 
 // print the matrix like the doc

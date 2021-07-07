@@ -1,31 +1,55 @@
 package main
 
-import "testing"
+import (
+	"testing"
+	"reflect"
+)
 
-func TestRemove1(t *testing.T) {
-	a := [][]int{  
-		{1, 0, 1, 0, 0},
-		{0, 1, 0, 1, 1},
-		{0, 0, 0, 1, 0},
-		{0, 1, 0, 1, 0},
-		{0, 0, 0, 0, 1},
-	}
-    x := removeBlackPixels(a)
-    if x != 7 {
-		t.Errorf("Deben ser 7 los pixeles en 1")
-    }
+var testcases = map[string]struct {
+	in  [][] int
+	out  [][] int
+}{
+	"2 pixeles eliminados": {
+		in:[][]int {
+			{1, 0, 1, 0, 0},
+			{0, 1, 0, 1, 1},
+			{0, 0, 0, 1, 0},
+			{0, 1, 0, 1, 0},
+			{0, 0, 0, 0, 1},
+		},
+		out:[][]int {
+			{1, 0, 1, 0, 0},
+			{0, 0, 0, 1, 1},
+			{0, 0, 0, 1, 0},
+			{0, 0, 0, 1, 0},
+			{0, 0, 0, 0, 1},
+		},
+	},
+	"0 pixeles eliminados": {
+		in:[][]int {
+			{1, 0, 1, 0, 0},
+			{1, 1, 0, 1, 1},
+			{0, 0, 0, 1, 0},
+			{0, 1, 0, 1, 0},
+			{0, 1, 0, 0, 1},
+		},
+		out:[][]int {
+			{1, 0, 1, 0, 0},
+			{1, 1, 0, 1, 1},
+			{0, 0, 0, 1, 0},
+			{0, 1, 0, 1, 0},
+			{0, 1, 0, 0, 1},
+		},
+	},
 }
 
-func TestRemove2(t *testing.T) {
-	a := [][]int{  
-		{1, 0, 1, 0, 0},
-		{1, 1, 0, 1, 1},
-		{0, 0, 0, 1, 0},
-		{0, 1, 0, 1, 0},
-		{0, 0, 0, 0, 1},
-	}
-    x := removeBlackPixels(a)
-    if x != 9 {
-		t.Errorf("Deben ser 9 los pixeles en 1")
+func TestRemove(t *testing.T) {
+	for name, tt := range testcases {
+		t.Run(name, func(t *testing.T) {
+			x := removeBlackPixels(tt.in)
+			if !reflect.DeepEqual(tt.out, x) {
+				t.Errorf("got %v, want %v", x, tt.out)
+			}
+		})
     }
 }
